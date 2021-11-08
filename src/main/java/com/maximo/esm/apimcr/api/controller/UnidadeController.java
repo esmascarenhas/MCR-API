@@ -6,6 +6,8 @@ import com.maximo.esm.apimcr.api.model.input.UnidadeInput;
 import com.maximo.esm.apimcr.domain.entity.Unidade;
 import com.maximo.esm.apimcr.domain.repository.UnidadeRepository;
 import com.maximo.esm.apimcr.domain.service.UnidadeService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import net.bytebuddy.agent.builder.AgentBuilder;
@@ -19,7 +21,8 @@ import java.util.List;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/unidades")
+@RequestMapping(value = "/api/v1/unidades")
+@Api(value = "MCR API REST - Controle de Unidades")
 public class UnidadeController {
 
     private UnidadeRepository unidadeRepository;
@@ -27,12 +30,14 @@ public class UnidadeController {
     private UnidadeMapper unidadeMapper;
 
     @GetMapping
+    @ApiOperation(value = "Listar de unidades")
     public CollectionModel  <UnidadeModel> listarUnidades(){
 
         return unidadeMapper.toCollectionModel(unidadeRepository.findAll());
     }
 
     @GetMapping("/{unidadeid}")
+    @ApiOperation(value = "Busca uma unidade específica")
     public ResponseEntity<UnidadeModel>buscar(@PathVariable Long unidadeid){
         return unidadeRepository.findById(unidadeid)
                 .map(unidade -> ResponseEntity.ok(unidadeMapper.toModel(unidade)))
@@ -40,6 +45,7 @@ public class UnidadeController {
     }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @ApiOperation(value = "Adiciona uma reserva")
     public UnidadeModel adicionar(@Valid @RequestBody UnidadeInput unidadeInput){
         Unidade novaUnidade = unidadeMapper.toEntity(unidadeInput);
         Unidade unidadeCadastrada = unidadeService.salvar(novaUnidade);
@@ -47,6 +53,7 @@ public class UnidadeController {
 
     }
     @PutMapping("/{unidadeid}")
+    @ApiOperation(value = "atualiza uma unidade específica")
     public ResponseEntity<Unidade>atualizarUnidade(@PathVariable Long unidadeid,
         @Valid @PathVariable Unidade unidade){
         if(!unidadeRepository.existsById(unidadeid)){

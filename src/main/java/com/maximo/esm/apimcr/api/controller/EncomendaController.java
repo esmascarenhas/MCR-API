@@ -20,9 +20,9 @@ import javax.validation.Valid;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/api/v1/encomendas")
-@Api("MCR API REST")
-    @CrossOrigin("*")
+@RequestMapping(value = "/api/v1/encomendas")
+@Api("MCR API REST - Controle de Encomendas")
+@CrossOrigin("*")
 public class EncomendaController {
 
     private EncomendaRespository encomendaRespository;
@@ -30,6 +30,7 @@ public class EncomendaController {
     private EncomendaMapper encomendaMapper;
     private BaixaEncomendaService baixaEncomendaService;
     private BuscaEncomendaService buscaEncomendaService;
+
 
     @GetMapping
     @ApiOperation(value = "Retorna uma lista de Encomendas")
