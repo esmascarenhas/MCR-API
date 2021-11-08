@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
-
+@AllArgsConstructor
 //@NoArgsConstructor
 public class UnidadeIdInput {
 
@@ -23,7 +23,5 @@ public class UnidadeIdInput {
         return id;
     }
 
-    public UnidadeIdInput(Long id) {
-        this.id = id;
-    }
+
 }
