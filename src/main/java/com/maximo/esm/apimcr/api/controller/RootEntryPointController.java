@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
-@RestController
+//@RestController
 public class RootEntryPointController {
 
-    @GetMapping
+/*    @GetMapping
     public RootEntryPointModel unidades(){
         var unidades = new RootEntryPointModel();
         unidades.add(linkTo(methodOn(UnidadeController.class)
                 .listarUnidades()).withRel("Relação de Unidades"));
         return unidades;
-    }
+    }*/
 /*    @GetMapping
     public RootEntryPointModel reservas(){
         var reservas = new RootEntryPointModel();
