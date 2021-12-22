@@ -5,4 +5,5 @@
 > 2. Documentação da API com o Swagger; 
 > 3. Gerenciamento de exceptions com a classe exceptionhandler; 
 > 4. Aprimorar a UI com uso de Hateoas; 
-> 5. Utilização do ModelMapper para DTO.
+> 5. Utilização do ModelMapper para DTO;
+> 6. Utilizando o flyway para migration do Banco de dados.
